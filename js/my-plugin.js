@@ -16,8 +16,13 @@ module.exports = function myPlugin() {
                 }
             },
             BinaryExpression(path) {
-                if (path.node.operator === '**') {
-                    path.replaceWithSourceString(`Math.pow(${path.node.left.value}, ${path.node.right.value})`);
+                const { node } = path;
+                const { operator } = node;
+                const { left: { value: valueLeft } } = node;
+                const { right: { value: valueRight } } = node;
+
+                if (operator === '**') {
+                    path.replaceWithSourceString(`Math.pow(${valueLeft}, ${valueRight})`);
                 }
             },
         },
