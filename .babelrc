@@ -5,11 +5,14 @@
         	{
             "targets": {
               "browsers": [
-                "IE 10"
+                  "last 2 versions", "IE>= 10"
               ]
             },
          }
        ]
    ],
-  "plugins": ["./js/my-plugin.js"]
+  "plugins": [
+      "./js/babel-plugins/babel-plugin-delete-logs.js",
+      "./js/babel-plugins/babel-plugin-transform-exponentiation-operator.js",
+  ]
 }

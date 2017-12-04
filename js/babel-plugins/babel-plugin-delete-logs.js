@@ -1,9 +1,8 @@
 // plugin deletes all console.log in code
-// and changes the exponentiation expression from a ** b to Math.pow(a, b)
 
-module.exports = function myPlugin() {
+module.exports = function logPlugin() {
     return {
-        name: 'my-plugin',
+        name: 'logPlugin',
         visitor: {
             CallExpression(path) {
                 const { node: { callee } } = path;
