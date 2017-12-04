@@ -1,7 +1,7 @@
 // plugin deletes all console.log in code
-// and changes the exponentiation expression from 1 ** 5 to 5 ** 1
+// and changes the exponentiation expression from a ** b to Math.pow(a, b)
 
-module.exports = function myPlugin({ types: t }) {
+module.exports = function myPlugin() {
     return {
         name: 'my-plugin',
         visitor: {
@@ -15,10 +15,11 @@ module.exports = function myPlugin({ types: t }) {
                     path.remove();
                 }
             },
-            // BinaryExpression(path) {
-            //     path.replaceWith(t.binaryExpression('**', path.node.right, path.node.left));
-            //     path.stop();
-            // },
+            BinaryExpression(path) {
+                if (path.node.operator === '**') {
+                    path.replaceWithSourceString(`Math.pow(${path.node.left.value}, ${path.node.right.value})`);
+                }
+            },
         },
     };
 };

@@ -1,12 +1,3 @@
-// window.require = require;
-// require("babel-polyfill");
-// require("babel-register");
-// import Promise from 'promise-polyfill';
-// To add to window
-// if (!window.Promise) {
-//   window.Promise = Promise;
-// }
-
 // plugin test input:
 // console.log('console log from widow');
 // const a = 2 ** 5;
