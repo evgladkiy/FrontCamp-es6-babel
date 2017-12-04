@@ -64,8 +64,8 @@ class App {
     constructor(defaultSources) {
         this.body = document.body;
         this.articlesContainer = document.querySelector('.articles-container');
-        this.form = document.forms['search-form'];
-        this.radioButtonsValue = this.form.radio.value;
+        this.form = document.forms[0];
+        this.radioButtonsValue = this.getValueFromRadioButton('radio');
         this.articles = null;
         this.articlesProvider = new ArticlesProvider();
         this.defaultSources = defaultSources;
@@ -111,17 +111,17 @@ class App {
         this.articles.forEach((article) => {
             const newArticle = document.createElement('article');
 
-            newArticle.classList.add('article');
+            newArticle.className = 'article';
             newArticle.innerHTML = App.getTemplate(article);
             container.appendChild(newArticle);
         });
 
-        this.body.classList.toggle('with-spinner');
+        this.body.className = '';
         this.articlesContainer.appendChild(container);
     }
 
     showError(errorText) {
-        this.body.classList.remove('with-spinner');
+        this.body.className = '';
         this.articlesContainer.innerHTML = `
             <p class="searchError centred">${errorText}</p>
         `;
@@ -132,11 +132,24 @@ class App {
 
         if (searchValue !== '') {
             this.articlesContainer.innerHTML = '';
-            this.body.classList.toggle('with-spinner');
+            this.body.className = 'with-spinner';
             this.searchAndRenderArticles(this.radioButtonsValue, searchValue);
         }
 
         e.preventDefault();
+    }
+
+    getValueFromRadioButton(name) {
+        const buttons = document.getElementsByName(name);
+
+        for (let i = 0; i < buttons.length; i++) {
+            var button = buttons[i];
+            if(button.checked) {
+                return button.value;
+            }
+        }
+
+        return null;
     }
 
     onChangeRadioHandler(e) {
@@ -144,9 +157,9 @@ class App {
         const { radioButtonsValue, form } = this;
 
         if (target.type === 'radio' && target.value !== radioButtonsValue) {
-            form[radioButtonsValue].classList.toggle('active');
+            form[radioButtonsValue].className = 'form__input';
             this.radioButtonsValue = target.value;
-            form[target.value].classList.toggle('active');
+            form[target.value].className += ' active';
         }
     }
 

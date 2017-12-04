@@ -1,11 +1,15 @@
 {
     "presets": [
-      ["env", {
-        "targets": {
-          "ie":  "10",
-          "browsers": ["last 2 versions"]
-        }
-      }]
-  ],
+      	[
+          "env",
+        	{
+            "targets": {
+              "browsers": [
+                "IE 10"
+              ]
+            },
+         }
+       ]
+   ],
   "plugins": ["./js/my-plugin.js"]
 }
