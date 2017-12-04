@@ -1,6 +1,6 @@
 ## ES6+Babel
 
-###  [Demo](https://evgladkiy.github.io/FrontCamp-es6/)
+###  [Demo](https://evgladkiy.github.io/FrontCamp-es6-babel/)
 
 ### Rate Criterias:
 - For 3 stars:
