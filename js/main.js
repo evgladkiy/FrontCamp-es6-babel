@@ -186,9 +186,4 @@ const newsApp = new App([
 ]);
 
 
-// (async function() {
-//   await loadStory();
-//   console.log("Yey, story successfully loaded!");
-// }());
-
 newsApp.init();

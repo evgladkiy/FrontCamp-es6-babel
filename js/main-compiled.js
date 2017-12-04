@@ -200,9 +200,4 @@ var App = function () {
 
 var newsApp = new App(['bbc-news', 'independent', 'the-washington-post', 'the-new-york-times', 'al-jazeera-english']);
 
-// (async function() {
-//   await loadStory();
-//   console.log("Yey, story successfully loaded!");
-// }());
-
 newsApp.init();
