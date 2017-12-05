@@ -2,7 +2,7 @@
 
 module.exports = function powPlugin() {
     return {
-        name: 'powPlugin',
+        name: 'transform-exponentiation-operator-plugin',
         visitor: {
             BinaryExpression(path) {
                 const { node } = path;

@@ -2,7 +2,7 @@
 
 module.exports = function logPlugin() {
     return {
-        name: 'logPlugin',
+        name: 'babel-plugin-delete-logs',
         visitor: {
             CallExpression(path) {
                 const { node: { callee } } = path;
@@ -12,16 +12,6 @@ module.exports = function logPlugin() {
 
                 if (isConsoleObj && isLogProp) {
                     path.remove();
-                }
-            },
-            BinaryExpression(path) {
-                const { node } = path;
-                const { operator } = node;
-                const { left: { value: valueLeft } } = node;
-                const { right: { value: valueRight } } = node;
-
-                if (operator === '**') {
-                    path.replaceWithSourceString(`Math.pow(${valueLeft}, ${valueRight})`);
                 }
             },
         },
